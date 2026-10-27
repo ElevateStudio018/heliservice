@@ -201,11 +201,6 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   border-radius: var(--r-xl); background: var(--sea-2); min-height: 420px;
   position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 20px;
 }
-.monogram {
-  position: absolute; inset: 0; display: grid; place-items: center;
-  font-size: clamp(220px, 30vw, 360px); font-weight: 800; letter-spacing: -0.08em; line-height: 1;
-  color: var(--sea); opacity: .9;
-}
 .about-meta {
   position: relative; display: flex; flex-direction: column;
   background: #FBF9F4; border-radius: var(--r-md); padding: 14px 18px;
@@ -318,3 +313,33 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   .coast .wire { stroke-dashoffset: 0; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Foton ---------- */
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15,27,36,0) 45%, rgba(15,27,36,.55) 100%);
+}
+.hero-card-label { z-index: 1; }
+
+.tile-photo { overflow: hidden; isolation: isolate; }
+.tile-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;
+  transition: transform .8s ease;
+}
+.tile-photo::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(15,27,36,0) 15%, rgba(15,27,36,.75) 55%, rgba(15,27,36,.95) 100%);
+}
+.tile-sea.tile-photo::before { background: linear-gradient(90deg, rgba(20,45,49,.92) 0%, rgba(20,45,49,.35) 100%); }
+.tile-photo:hover .tile-bg { transform: scale(1.04); }
+.tile-photo .tag { color: var(--paper); opacity: .8; }
+
+.tile-thumb { justify-content: flex-start; padding-top: 12px; }
+.tile-thumb .thumb {
+  width: calc(100% + 16px); margin: 0 -8px 8px; height: 150px; object-fit: cover;
+  border-radius: calc(var(--r-lg) - 10px);
+}
+.tile-thumb .tag { top: 22px; left: 22px; background: rgba(251,249,244,.9); opacity: 1; border-color: transparent; }
+
+.about-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
